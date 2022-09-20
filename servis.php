@@ -14,7 +14,7 @@
         <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase mt-3">dsaasa</h2>
+                    <h2 class="section-heading text-uppercase mt-3"><?php echo $sonuc ["baslik"] ?></h2>
                     <h3 class="section-subheading text-muted"><?php echo $sonuc ["alt_baslik"] ?></h3>
                 </div>
                 <div class="row text-center">
