@@ -51,11 +51,13 @@
 
               
                 if($_POST){
-                    $sorgu=$baglanti->prepare("INSERT INTO iletisimformu (ad, email, telefon, mesaj) VALUES(':ad',':email',':telefon',':mesaj')");
-                    $ekle=$sorgu->execute(
-                 
-                  
-                    );
+                    $ad = $_POST["ad"];
+                    $email = $_POST["mail"];
+                    $telefon = $_POST["tel"];
+                    $mesaj = $_POST["mesaj"];
+
+                    $sorgu=$baglanti->prepare("INSERT INTO iletisimformu (ad, email, telefon, mesaj) VALUES('$ad','$email','$telefon','$mesaj')");
+                    $ekle=$sorgu->execute();
                     }
                 ?>
 
