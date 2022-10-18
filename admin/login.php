@@ -24,12 +24,39 @@
                                     <?php  
                                     session_start();
                                     include '../include/db.php';  
+
+                                    if(isset($_SESSION["Oturum"]) && $_SESSION["Oturum"]=="6789"){
+
+                                        header("location:index.php");
+                                    }
+
+                                    elseif(isset($_COOKIE["cerez"])){
+
+                                        $sorgu=$baglanti->prepare("SELECT kullanici_adi,yetki from kullanici where aktif=1");
+                                        $sorgu->execute();
+                                        while ($sonuc=$sorgu->fetch()){
+                                            if($_COOKIE["cerez"]==md5("aa".$kullanici_adi."bb")){
+                                             $_SESSION["Oturum"]="6789";
+                                             $_SESSION["kullanici_adi"]=$kullanici_adi;
+                                             $_SESSION["yetki"]=$sonuc["yetki"];
+                                             header("location:index.php");
+
+                                            }
+
+                                        }
+
+                                    }
+
+
+                                    $kullanici_adi="";
                                     
                                     if($_POST){
                                         $kullanici_adi=$_POST["kullanici_adi"];
                                         $parola=$_POST["parola"];
 
                                     }
+
+                                    md5(md5("56"."1234"."23"));
 
                                     ?>
 
@@ -56,11 +83,21 @@
                                         <?php 
                                         if($_POST)
                                         {
-                                            $sorgu=$baglanti->prepare("SELECT parola from kullanici where kullanici_adi=:kullanici_adi and aktif=1");
+                                            $sorgu=$baglanti->prepare("SELECT parola,yetki from kullanici where kullanici_adi=kullanici_adi and aktif=1");
                                             $sorgu->execute();
                                             $sonuc=$sorgu->fetch();
-                                            if($parola==$sonuc['parola']){
+                                            if(md5(md5("56".$parola."23"))==$sonuc['parola']){
 
+
+                                             $_SESSION["Oturum"]="6789";
+                                             $_SESSION["kullanici_adi"]=$kullanici_adi;
+                                             $_SESSION["yetki"]=$sonuc["yetki"];
+
+                                             if(isset($_POST["cbHatirla"])){
+                                                    setcookie("cerez",md5("aa"."$kullanici_adi"."bb", time()+(60*60*24*7)));
+                                            }
+                         
+                                    
                                                 header("location:index.php");
 
                                             }
