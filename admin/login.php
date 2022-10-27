@@ -35,12 +35,12 @@
                                         $sorgu=$baglanti->prepare("SELECT kullanici_adi,yetki from kullanici where aktif=1");
                                         $sorgu->execute();
                                         while ($sonuc=$sorgu->fetch()){
-                                            if($_COOKIE["cerez"]==md5("aa".$kullanici_adi."bb")){
+                                            if($_COOKIE["cerez"]==md5("aa" .$sonuc[kullanici_adi]. "bb")){
                                              $_SESSION["Oturum"]="6789";
-                                             $_SESSION["kullanici_adi"]=$kullanici_adi;
+                                             $_SESSION["kullanici_adi"]=$sonuc[kullanici_adi];
                                              $_SESSION["yetki"]=$sonuc["yetki"];
                                              header("location:index.php");
-
+                                        
                                             }
 
                                         }
