@@ -94,8 +94,8 @@ include("../include/db.php")
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <div class="small">Giriş yapan:</div>
+                        <?php echo $_SESSION["kullanici_adi"] ?>
                     </div>
                 </nav>
             </div>

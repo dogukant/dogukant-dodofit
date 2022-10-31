@@ -8,10 +8,10 @@ $sonuc=$sorgu->fetch();
 
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Ana Sayfa</h1>
+                        <h1 class="mt-4">Ana Sayfa Güncelle</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
-                            <li class="breadcrumb-item active">Ana Sayfa</li>
+                            <li class="breadcrumb-item active">Ana Sayfa Güncelle</li>
                         </ol>
                    
                        
@@ -21,7 +21,7 @@ $sonuc=$sorgu->fetch();
                             
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                
                                     <thead>
                                         <tr>
                                             <th>Üst Başlık</th>
@@ -41,7 +41,7 @@ $sonuc=$sorgu->fetch();
                                             <td><?php echo $sonuc["link"]?></td>
                                             <td><?php echo $sonuc["tanimlama"]?></td>
                                             <td><?php echo $sonuc["anahtar"]?></td>
-                                            <td><a  href="anasafyaDuzenle.php?id=<?php echo $sonuc["anahtar"]?>"> 
+                                            <td><a  href="anasafyaGuncelle.php?id=<?php echo $sonuc["id"]?>"> 
                                         <span class="fa fa-edit fa-2x"></span>
                                         </a></td>
                                         </tr>
