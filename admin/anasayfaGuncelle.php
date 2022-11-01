@@ -4,6 +4,22 @@ include 'inc/aheader.php';
 $sorgu=$baglanti->prepare("SELECT * FROM anasayfa WHERE id");
 $sorgu->execute();
 $sonuc=$sorgu->fetch();
+
+if ($_POST) {
+
+    $guncelleSorgu=$baglanti->prepare("UPDATE anasayfa set ust_baslik=:ust_baslik, alt_baslik=:alt_baslik, link_metin:link_metin, link=:link, tanimlama=:tanimlama, anahtar=:anahtar where id=:id");
+    $guncelle=$guncelleSorgu->execute([
+        'ust_baslik'=>$_POST["ust_baslik"],
+        'alt_baslik'=>$_POST["alt_baslik"],
+        'link_metin'=>$_POST["link_metin"],
+        'link'=>$_POST["link"],
+        'tanimlama'=>$_POST["tanimlama"],
+        'anahtar'=>$_POST["anahtar"],
+        'id'=>$_GET["id"]
+    ]);
+
+   
+}
 ?>
 
                 <main>
@@ -71,6 +87,7 @@ $sonuc=$sorgu->fetch();
                             <div 
                                 <div class="form-group">
                          
+                                <input type="submit" name="anahtar" value="Güncelle" class="btn btn-primary">
                                 </div>
 
                                 

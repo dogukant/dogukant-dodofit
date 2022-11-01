@@ -85,7 +85,7 @@ include("../include/db.php")
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link <?php if($sayfa=="Ana Sayfa") echo "active"; ?>" href="anasayfa.php">Ana Sayfa</a>
+                                    <a class="nav-link <?php if($sayfa=="Ana Sayfa") echo "active"; ?>" href="anasayfaGuncelle.php">Ana Sayfa</a>
                                     <a class="nav-link" href="referanslar.php">Referanslar</a>
                                 </nav>
                             </div>
