@@ -1,25 +1,47 @@
 <?php
 $sayfa="Ana Sayfa";
 include 'inc/aheader.php';
+
+
+
+
+
+
 $sorgu=$baglanti->prepare("SELECT * FROM anasayfa WHERE id");
 $sorgu->execute();
 $sonuc=$sorgu->fetch();
 
 if ($_POST) {
+    $ust_baslik = $_POST["ust_baslik"];
+    $alt_baslik = $_POST["alt_baslik"];
+    $link_metin = $_POST["link_metin"];
+    //$link = $_POST["link"];
+    $tanimlama = $_POST["tanimlama"];
+    $anahtar = $_POST["anahtar"];
+    
 
-    $guncelleSorgu=$baglanti->prepare("UPDATE anasayfa set ust_baslik=:ust_baslik, alt_baslik=:alt_baslik, link_metin:link_metin, link=:link, tanimlama=:tanimlama, anahtar=:anahtar where id=:id");
-    $guncelle=$guncelleSorgu->execute([
-        'ust_baslik'=>$_POST["ust_baslik"],
-        'alt_baslik'=>$_POST["alt_baslik"],
-        'link_metin'=>$_POST["link_metin"],
-        'link'=>$_POST["link"],
-        'tanimlama'=>$_POST["tanimlama"],
-        'anahtar'=>$_POST["anahtar"],
-        'id'=>$_GET["id"]
-    ]);
+
+    $guncelleSorgu=$baglanti->prepare("INSERT INTO anasayfa (ust_baslik, alt_baslik, link_metin, link, tanimlama, anahtar VALUES('$ust_baslik','$alt_baslik','$link_metin','$tanimlama','$anahtar')");
+    $guncelle=$guncelleSorgu->execute();
+    }
+    
+    
+   /* <?php
+       
+    if($_POST){
+        $ad = $_POST["ad"];
+        $email = $_POST["mail"];
+        $telefon = $_POST["tel"];
+        $mesaj = $_POST["mesaj"];
+
+        $sorgu=$baglanti->prepare("INSERT INTO iletisimformu (ad, email, telefon, mesaj) VALUES('$ad','$email','$telefon','$mesaj')");
+        $ekle=$sorgu->execute();
+        }
+    ?>
+*/
 
    
-}
+
 ?>
 
                 <main>
