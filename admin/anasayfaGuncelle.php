@@ -25,6 +25,7 @@ if ($_POST) {
     $guncelle=$guncelleSorgu->execute();
     }
     
+    //prepare("UPDATE `exhibitors` SET first_name = '$first_name' WHERE id = '52'");
     
    /* <?php
        
